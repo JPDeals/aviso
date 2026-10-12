@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#38281e">
+<meta name="description" content="JPDeals — Site temporariamente em manutenção. Em breve estaremos de volta.">
+<title>JPDeals | Site em manutenção</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#38281e}body{font-family:Arial,Helvetica,sans-serif;color:white}
+.viewport{min-height:100svh;display:grid;place-items:center;overflow:hidden;position:relative;isolation:isolate}
+.viewport:before{content:"";position:absolute;inset:-25px;background:url('jpdeals-background.jpg') center/cover no-repeat;filter:blur(16px) brightness(.6);z-index:-1}
+.scene{position:relative;width:min(100vw,177.890625svh);aspect-ratio:1024.5/576;background:url('jpdeals-background.jpg') center/100% 100% no-repeat;box-shadow:0 0 55px #1d120c66}
+.hotspot{position:absolute;display:block;border-radius:12px;cursor:pointer;outline-offset:4px}
+.hotspot:focus-visible{outline:3px solid #fff}
+.social-cta{left:42.2%;top:72.4%;width:15.6%;height:11.3%;border-radius:30px}
+.facebook{left:43.65%;top:85.1%;width:3.1%;height:7.3%}
+.instagram{left:47.7%;top:85.1%;width:3.6%;height:7.3%}
+.x-social{left:52.5%;top:85.1%;width:3.7%;height:7.3%}
+/* On portrait screens retain the entire original composition, without cropping. */
+@media(max-aspect-ratio: 1/1){.scene{width:100vw}.viewport{min-height:100svh}}
+.notice{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#231b1af0;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;max-width:90vw;text-align:center;z-index:5;box-shadow:0 5px 25px #0005}
+.notice[hidden]{display:none}
+</style>
+</head>
+<body>
+<main class="viewport">
+  <div class="scene" role="img" aria-label="JPDeals: site em manutenção. Pedimos desculpa pela indisponibilidade temporária. Prometemos ser breves.">
+    <a class="hotspot social-cta" data-social="instagram" href="#" aria-label="Siga as nossas redes sociais (Instagram)"></a>
+    <a class="hotspot facebook" data-social="facebook" href="#" aria-label="Facebook da JPDeals"></a>
+    <a class="hotspot instagram" data-social="instagram" href="#" aria-label="Instagram da JPDeals"></a>
+    <a class="hotspot x-social" data-social="x" href="#" aria-label="X da JPDeals"></a>
+  </div>
+</main>
+<div class="notice" id="notice" role="status" hidden></div>
+<script>
+/* COLOQUE OS LINKS OFICIAIS ENTRE ASPAS. Exemplo: instagram: 'https://www.instagram.com/SEU_PERFIL/' */
+const REDES_SOCIAIS = {
+  facebook: 'https://www.facebook.com/share/1JBGbu92JQ/',
+  instagram: 'https://www.instagram.com/jp_deals_pt?exln=NWN4a2c4ZmZpd3R6',
+  x: 'https://x.com/JPDeals_'
+};
+const aviso = document.getElementById('notice');
+let avisoTimer;
+for(const a of document.querySelectorAll('[data-social]')) {
+  const url = REDES_SOCIAIS[a.dataset.social]?.trim();
+  if(url && /^https:\/\//i.test(url)) {a.href=url;a.target='_blank';a.rel='noopener noreferrer'}
+  else a.addEventListener('click', event=>{
+    event.preventDefault();
+    aviso.textContent='Esta rede social estará disponível em breve.';
+    aviso.hidden=false;
+    clearTimeout(avisoTimer);
+    avisoTimer=setTimeout(()=>{aviso.hidden=true},3500);
+  });
+}
+</script>
+</body>
+</html>
