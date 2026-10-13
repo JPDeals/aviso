@@ -7,19 +7,21 @@
 <meta name="description" content="JPDeals — Site temporariamente em manutenção. Em breve estaremos de volta.">
 <title>JPDeals | Site em manutenção</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#38281e}body{font-family:Arial,Helvetica,sans-serif;color:white}
-.viewport{min-height:100svh;display:grid;place-items:center;overflow:hidden;position:relative;isolation:isolate}
-.viewport:before{content:"";position:absolute;inset:-25px;background:url('jpdeals-background.jpg') center/cover no-repeat;filter:blur(16px) brightness(.6);z-index:-1}
-.scene{position:relative;width:min(100vw,177.890625svh);aspect-ratio:1024.5/576;background:url('jpdeals-background.jpg') center/100% 100% no-repeat;box-shadow:0 0 55px #1d120c66}
-.hotspot{position:absolute;display:block;border-radius:12px;cursor:pointer;outline-offset:4px}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#38281e}
+body{font-family:Arial,Helvetica,sans-serif;color:white}
+/* A composição original ocupa sempre a totalidade do ecrã, sem margens desfocadas. */
+.viewport{width:100%;height:100vh;height:100dvh;overflow:hidden;position:relative}
+.scene{position:absolute;inset:0;width:100%;height:100%;background:url('jpdeals-background.jpg') center center/100% 100% no-repeat}
+.hotspot{position:absolute;display:block;border-radius:12px;cursor:pointer;outline-offset:4px;-webkit-tap-highlight-color:transparent}
 .hotspot:focus-visible{outline:3px solid #fff}
 .social-cta{left:42.2%;top:72.4%;width:15.6%;height:11.3%;border-radius:30px}
 .facebook{left:43.65%;top:85.1%;width:3.1%;height:7.3%}
 .instagram{left:47.7%;top:85.1%;width:3.6%;height:7.3%}
 .x-social{left:52.5%;top:85.1%;width:3.7%;height:7.3%}
-/* On portrait screens retain the entire original composition, without cropping. */
-@media(max-aspect-ratio: 1/1){.scene{width:100vw}.viewport{min-height:100svh}}
-.notice{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#231b1af0;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;max-width:90vw;text-align:center;z-index:5;box-shadow:0 5px 25px #0005}
+/* Áreas táteis maiores para ecrãs pequenos, mantendo os centros dos ícones. */
+@media(max-width:700px){.facebook{left:41.7%;width:7%}.instagram{left:46%;width:7%}.x-social{left:51%;width:7%}.social-cta{left:39%;width:22%}}
+.notice{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#231b1af0;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;max-width:90vw;text-align:center;z-index:5}
 .notice[hidden]{display:none}
 </style>
 </head>
